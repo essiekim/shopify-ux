@@ -1,0 +1,29 @@
+.results {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 20px;
+  margin: 0px 10px;
+  background: white;
+  border-radius: 4px;
+  height: fit-content;
+}
+
+.results ul {
+  padding: 0px 30px;
+}
+
+.results li {
+  list-style-type: none;
+  padding: 10px 0px;
+}
+
+.section-search {
+  background: #fafafa;
+}
+
+.results h3 {
+  margin: auto;
+  padding: 24px 0px 0px 0px;
+}
