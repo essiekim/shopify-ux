@@ -22,7 +22,7 @@ export default class SearchBar extends Component {
   async handleSubmit(event) {
     event.preventDefault()
     const {data} = await axios.get(
-      `http://www.omdbapi.com/?s=${this.state.query}&type=movie&apikey=${
+      `https://www.omdbapi.com/?s=${this.state.query}&type=movie&apikey=${
         secret.apiKey
       }`
     )
