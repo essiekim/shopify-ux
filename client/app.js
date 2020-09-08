@@ -1,7 +1,6 @@
 import React from 'react'
 
-import {Search} from './components'
-import Footer from './components/Footer'
+import {Search, Footer} from './components'
 
 const App = () => {
   return (

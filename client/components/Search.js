@@ -3,13 +3,10 @@ import axios from 'axios'
 import toaster from 'toasted-notes'
 
 import '../global.css'
-import '../css/Splash.css'
 import '../css/Search.css'
 import 'toasted-notes/src/styles.css'
 
-import Nominated from './Nominated'
-import Results from './Results'
-import SearchBar from './SearchBar'
+import {Nominated, Results, SearchBar} from './index'
 
 export default class Search extends Component {
   constructor() {
