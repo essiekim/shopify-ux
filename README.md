@@ -1,5 +1,5 @@
 # Shopify 2020 - UX Internship Project
-[Deployed Link] (https://shopify-ux.herokuapp.com/)
+[Deployed Link](https://shopify-ux.herokuapp.com/)
 
 Designed + coded by Esther Kim.
 
