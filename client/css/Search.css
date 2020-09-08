@@ -8,6 +8,9 @@
   background: white;
   border-radius: 4px;
   height: fit-content;
+  max-height: 600px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .results ul {
@@ -17,6 +20,10 @@
 .results li {
   list-style-type: none;
   padding: 10px 0px;
+}
+
+.results p {
+  text-align: center;
 }
 
 .section-search {

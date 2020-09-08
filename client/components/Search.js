@@ -3,7 +3,10 @@ import axios from 'axios'
 import SearchBar from './SearchBar'
 
 import '../global.css'
+import '../css/Splash.css'
 import '../css/Search.css'
+import Nominated from './Nominated'
+import Results from './Results'
 
 export default class Search extends Component {
   constructor() {
@@ -15,6 +18,7 @@ export default class Search extends Component {
     }
     this.getMovies = this.getMovies.bind(this)
     this.currentQ = this.currentQ.bind(this)
+    this.updateMovies = this.updateMovies.bind(this)
   }
 
   async componentDidMount() {
@@ -22,6 +26,14 @@ export default class Search extends Component {
     this.setState({
       nominated: data
     })
+  }
+
+  async updateMovies() {
+    const {data} = await axios.get('/api/movies')
+    this.setState({
+      nominated: data
+    })
+    this.completedAlert()
   }
 
   getMovies(data) {
@@ -34,59 +46,32 @@ export default class Search extends Component {
     this.setState({q: data})
   }
 
+  completedAlert() {
+    if (this.state.nominated.length === 5) {
+      alert(
+        "You're done! Feel free to revise your choices by un-starring and nominating others!"
+      )
+    }
+  }
+
   render() {
     return (
-      <div className="section-search">
-        <SearchBar getMovies={this.getMovies} currentQ={this.currentQ} />
-        <br />
-        <br />
-        <div className="main">
-          <div className="results row">
-            <h3>
-              Search Results{' '}
-              {this.state.q === '' ? null : `for "${this.state.q}"`}
-            </h3>
-            <div>
-              <ul>
-                {this.state.movies
-                  ? this.state.movies.map(m => {
-                      return (
-                        <li key={m.imdbID}>
-                          <strong>{m.Title}</strong>, {m.Year}
-                          {this.state.nominated.find(
-                            n => n.imdbID === m.imdbID
-                          ) ? (
-                            <button
-                              type="button"
-                              onClick={async () => {
-                                await axios.delete(`/api/movies/${m.imdbID}`)
-                              }}
-                            >
-                              <i className="far fa-star" />
-                              Nominated
-                            </button>
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={async () => {
-                                await axios.post(`/api/movies`, {
-                                  title: m.Title,
-                                  year: m.Year,
-                                  imdbID: m.imdbID
-                                })
-                              }}
-                            >
-                              <i className="fas fa-star" />
-                              Nominate
-                            </button>
-                          )}
-                        </li>
-                      )
-                    })
-                  : 'No results!'}
-              </ul>
-            </div>
-          </div>
+      <div>
+        <div className="main col splash">
+          <SearchBar getMovies={this.getMovies} currentQ={this.currentQ} />
+        </div>
+
+        <div className="row main">
+          <Results
+            q={this.state.q}
+            nominated={this.state.nominated}
+            movies={this.state.movies}
+            updateMovies={this.updateMovies}
+          />
+          <Nominated
+            nominated={this.state.nominated}
+            updateMovies={this.updateMovies}
+          />
         </div>
       </div>
     )

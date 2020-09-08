@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import secret from '../../secrets'
 
-import Search from './Search'
-
 export default class SearchBar extends Component {
   constructor(props) {
     super(props)
@@ -41,29 +39,22 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="searchBar">
-            <i className="fas fa-search" />
-            <input
-              placeholder="Start searching for a nomination-worthy movie title here"
-              name="query"
-              type="text"
-              value={this.state.query}
-              onKeyDown={this.onKeyPress}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="buttonBar">
-            <button type="submit" className="searchButton">
-              Search
-            </button>
-            <button type="button" className="nomButton">
-              View Nominations
-            </button>
-          </div>
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <div className="searchBar">
+          <i className="fas fa-search" />
+          <input
+            placeholder="Start searching for a nomination-worthy movie title here"
+            name="query"
+            type="text"
+            value={this.state.query}
+            onKeyDown={this.onKeyPress}
+            onChange={this.handleChange}
+          />
+          <button type="submit" className="searchButton">
+            Search
+          </button>
+        </div>
+      </form>
     )
   }
 }

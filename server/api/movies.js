@@ -3,8 +3,6 @@ const Nomination = require('../db/models/nomination')
 
 module.exports = router
 
-// const apiKey = require('./../../secrets')
-
 // GET route
 // fetch nominations list
 router.get('/', async (req, res, next) => {
@@ -38,7 +36,7 @@ router.delete('/:id', async (req, res, next) => {
     if (id) {
       await Nomination.destroy({
         where: {
-          id: id
+          imdbID: id
         }
       })
       res.sendStatus(204)
