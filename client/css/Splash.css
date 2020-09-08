@@ -1,5 +1,4 @@
 .splash {
-  height: 40vh;
   position: sticky;
   top: -8.25rem;
 }
@@ -13,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 90%;
+  width: 60vw;
   height: 50px;
   border-radius: 50px;
 
@@ -43,7 +42,7 @@ input {
   border: none;
   width: 90%;
   height: 44px;
-  font-size: 18px;
+  font-size: 16px;
   overflow: hidden;
 
   border-radius: 46px;
@@ -119,12 +118,12 @@ button:focus {
 footer {
   align-items: center;
   background-color: #333333;
-  /* color: white; */
   display: flex;
   height: 80px;
   padding: 10px 50px;
   justify-content: space-between;
-
+  position: sticky;
+  bottom: 0;
   align-self: flex-end;
 }
 

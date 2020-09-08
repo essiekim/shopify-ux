@@ -9,6 +9,12 @@ body {
   margin: 0;
 }
 
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+
 html {
   background: linear-gradient(180deg, #ffd9d9 0%, rgba(255, 255, 255, 0) 100%),
     linear-gradient(90deg, #f8ff00 2.22%, #3ad59f 97.22%);
@@ -44,7 +50,7 @@ nav {
   display: flex;
   height: 80px;
   padding: 10px 50px;
-  justify-content: left;
+  justify-content: space-between;
   position: sticky;
   top: 0;
 }

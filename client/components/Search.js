@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import SearchBar from './SearchBar'
+import toaster from 'toasted-notes'
 
 import '../global.css'
 import '../css/Splash.css'
 import '../css/Search.css'
+import 'toasted-notes/src/styles.css'
+
 import Nominated from './Nominated'
 import Results from './Results'
+import SearchBar from './SearchBar'
 
 export default class Search extends Component {
   constructor() {
@@ -48,8 +51,9 @@ export default class Search extends Component {
 
   completedAlert() {
     if (this.state.nominated.length === 5) {
-      alert(
-        "You're done! Feel free to revise your choices by un-starring and nominating others!"
+      toaster.notify(
+        "Yay, you're done! Feel free to revise your choices by un-starring and searching for other movies!",
+        {duration: null}
       )
     }
   }
@@ -57,9 +61,17 @@ export default class Search extends Component {
   render() {
     return (
       <div>
-        <div className="main col splash">
-          <SearchBar getMovies={this.getMovies} currentQ={this.currentQ} />
+        <div className="col splash">
+          <nav>
+            <img
+              src="https://i.ibb.co/6nLDq67/the-Shoppies.png"
+              alt="The Shoppies"
+              draggable="false"
+            />
+            <SearchBar getMovies={this.getMovies} currentQ={this.currentQ} />
+          </nav>
         </div>
+        <h3>Select up to 5 movies to nominate for this year's Shoppies.</h3>
 
         <div className="row main">
           <Results
